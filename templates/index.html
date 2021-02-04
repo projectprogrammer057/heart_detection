@@ -33,6 +33,10 @@
     border-color: #f6b93b !important;
     transition: all 0.4s ease 0s;
     }
+    .pain{
+	   color:red;
+	    text-align:center;
+	  }
   </style>
 
 </head>
@@ -79,52 +83,52 @@
         <h1>Enter the value of heart features >>></h1>
         
     	<input type="text" name="age" placeholder="Enter the Age" required="required" />
-        <input type="text" name="trestbps" placeholder="trestbps" required="required" />
-		<input type="text" name="chol" placeholder="chol" required="required" />
-        <input type="text" name="thalach" placeholder="thalach" required="required" />
-            <input type="text" name="oldpeak" placeholder="oldpeak" required="required" />
+        <input type="text" name="trestbps" placeholder=" Blood Pressure(in mm-Hg)" required="required" />
+		<input type="text" name="chol" placeholder="serum Cholestrol(in mg/dl)" required="required" />
+        <input type="text" name="thalach" placeholder="Heart rate(per one Minute)" required="required" />
+            <input type="text" name="oldpeak" placeholder="Old peak" required="required" />
 		
         
 
 		<br>
-    	<input type="text" name="sex_0" placeholder="sex_0" required="required" />
-        <input type="text" name="sex_1" placeholder="sex_1" required="required" />
-		<input type="text" name="cp_0" placeholder="cp_0" required="required" />
-        <input type="text" name=" cp_1" placeholder=" cp_1" required="required" />
-            <input type="text" name="cp_2" placeholder="cp_2" required="required" />
+    	<input type="text" name="sex_0" placeholder="Sex_F" required="required" />
+        <input type="text" name="sex_1" placeholder="sex_M" required="required" />
+		<input type="text" name="cp_0" placeholder="CP1" required="required" />
+        <input type="text" name=" cp_1" placeholder="CP2" required="required" />
+            <input type="text" name="cp_2" placeholder="CP3" required="required" />
     	
         
 		
 		<br>
-    	<input type="text" name="cp_3" placeholder=" cp_3" required="required" />
-        <input type="text" name="fbs_0" placeholder="fbs_0" required="required" />
-		<input type="text" name="restecg_0" placeholder="restecg_0" required="required" />
-        <input type="text" name="restecg_1" placeholder="restecg_1" required="required" />
-            <input type="text" name="restecg_2" placeholder="restecg_2" required="required" />
+    	<input type="text" name="cp_3" placeholder="CP4" required="required" />
+        <input type="text" name="fbs_0" placeholder="Diabaties in blood" required="required" />
+		<input type="text" name="restecg_0" placeholder="Electrocardiographic Result1" required="required" />
+        <input type="text" name="restecg_1" placeholder="Electrocardiographic Result2" required="required" />
+            <input type="text" name="restecg_2" placeholder="Electrocardiographic Result3" required="required" />
     	
         
 		
     	<br>
-    	<input type="text" name="exang_0" placeholder="exang_0" required="required" />
-        <input type="text" name="exang_1" placeholder="exang_1" required="required" />
-		<input type="text" name=" slope_0" placeholder=" slope_0" required="required" />
-        <input type="text" name=" slope_1" placeholder="slope_1" required="required" />
-    <input type="text" name="  slope_2" placeholder=" slope_2" required="required" />
+    	<input type="text" name="exang_0" placeholder="Exercise induced Angina(NO)" required="required" />
+        <input type="text" name="exang_1" placeholder="Exercise induced Angina(YES)" required="required" />
+		<input type="text" name=" slope_0" placeholder="Slope1" required="required" />
+        <input type="text" name=" slope_1" placeholder="Slope2" required="required" />
+    <input type="text" name="  slope_2" placeholder="Slope3" required="required" />
     	
         
 			<br>
 
 
       
-      <input type="text" name=" ca_0" placeholder=" ca_0" required="required" />
-        <input type="text" name="ca_1" placeholder="ca_1" required="required" />
-    <input type="text" name="ca_2" placeholder="ca_2" required="required" />
-        <input type="text" name=" thal_1" placeholder="thal_1" required="required" />
-    <input type="text" name="thal_2" placeholder="thal_2" required="required" />
+      <input type="text" name=" ca_0" placeholder="Vessel 0" required="required" />
+        <input type="text" name="ca_1" placeholder="Vessel 1" required="required" />
+    <input type="text" name="ca_2" placeholder="Vessel 2" required="required" />
+        <input type="text" name=" thal_1" placeholder="Reaction(Normal Zone)" required="required" />
+    <input type="text" name="thal_2" placeholder="Reaction(Medium Zone)" required="required" />
       
         
       <br>
-      <input type="text" name="thal_3" placeholder="thal_3" required="required" />
+      <input type="text" name="thal_3" placeholder="Reaction(Riskable Zone)" required="required" />
       <br>
 
 
@@ -146,6 +150,29 @@
    </div>
 
  </div>
+	</br>
+	</br>
+	<p class="pain">
+        Age:---age in years</br>
+	Sex:--1=male,0=Female(Sex_M=Male,Sex_F=Female)</br>
+        cp:--Chest Pain type[CP1(Low type,0=No CP1,1=Yes CP1),CP2(Medium type,0=No CP2,1=Yes CP2),CP3(High type,0=No CP3,1=Yes CP3),CP4(Very High type,0=No CP4,1=Yes CP4)]</br>
+        Diabaties in blood:--0=No Diabaties,1=Yes Diabaties</br>
+        Blood Pressure(in mm-Hg):--resting blood pressure(in mm-hg on admission to the hospital)</br>
+        serum Cholestrol(in mg/dl):--Serum Cholestrol in mg/dl</br>
+        Heart rate(per one Minute):--Maximam Heart Rate Achived in One minutes</br>
+        Old peak:--ST depression induced by exercise relative to rest</br>
+        Electrocardiographic Result:--[Electrocardiographic Result1(Low peak,0=No,1=Yes),Electrocardiographic Result2(Medium peak,0=No,1=Yes),Electrocardiographic Result3(High peak,0=No,1=Yes)</br>
+        Exercise induced Angina:--0=No,1=Yes</br>
+        slope:--The ST segment shift relative to exercise-induced increments in heart rate[Slope1(Low peak,0=No,1=Yes),Slope2(Medium peak,0=No,1=Yes),Slope3(High peak,0=No,1=Yes]</br>
+        Vessel:--The Number Of the vessels are blocked[Vessel 0(No Vessel Blocked,0=No,1=Yes),Vessel 1(1 Vessel Blocked,0=No,1=Yes),Vessel 2(2 Vessels Blocked,0=No,1=Yes)]</br>
+        Reaction:--Patient Reaction[Reaction(Normal Zone,0=No,1=Yes),Reaction(Medium Zone,0=No,1=Yes),Reaction(Risky Zone,0=No,1=Yes)]
+</p>
+        
+
+        
+
+
+	       
 
 </body>
 </html>
