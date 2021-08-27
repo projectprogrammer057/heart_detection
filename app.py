@@ -25,12 +25,12 @@ def predict():
     output = model.predict(df)
         
     if output == 1:
-        res_val = "** heart disease **"
+        res_val = "**affected in Heart Disease on the basis of your information.Please consult to a Cardiologist as soon as possible because a proper treatment would need for you **"
     else:
-        res_val = "no heart disease "
+        res_val = "not affected in Heart disease on the basis of your information.Enjoy Your life and maintain healthy habits to help prevent heart disease."
         
 
-    return render_template('index.html', prediction_text='Patient has {}'.format(res_val))
+    return render_template('index.html', prediction_text='You have{}'.format(res_val))
 
 if __name__ == "__main__":
     app.run()
