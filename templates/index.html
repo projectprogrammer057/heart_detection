@@ -1,210 +1,869 @@
-<!-- This is GUI for Heart disease Detection Application Using Machine Learning Classifer -->
+<!doctype html>
+<html lang="en">
 
-<!DOCTYPE html>
-<html >
 <head>
-  <meta charset="UTF-8">
-  <title>Heart Detected BY KALAM SARDAR</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <style>
-    /* CSS code for button */
-    body {
-      background-image: url('static/images/cardio4.jpg');
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      background-size: cover;
-    }
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Rowdies:wght@700&display=swap" rel="stylesheet">
 
-    /* CSS code for button */
-    .button_css {
-    color: #494949 !important;
-    text-transform: uppercase;
-    text-decoration: none;
-    background: #ffffff;
-    padding: 20px;
-    border: 4px solid #494949 !important;
-    display: inline-block;
-    transition: all 0.4s ease 0s;
-    }
-    
-    .button_css:hover {
-    color: #ffffff !important;
-    background: #f6b93b;
-    border-color: #f6b93b !important;
-    transition: all 0.4s ease 0s;
-    }
-@media(min-width:1200px){
-	 
-	
-	
-	}
-	@media(min-width:992px) and (max-width:1199px){
-	
-	body{
-	  position:absolute;
-	  width:950px;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      background-size: contain;
-	  margin:10px;
-	   }
-	
-	}
-	@media(min-width:768px) and (max-width:951px){
-	body{
-	  position:absolute;
-	  width:750px;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      background-size: contain;
-	  margin:10px;
-	   }
-	
-	
-	}
-	@media(min-width:576px) and (max-width:767px){
-	 body{
-	  position:absolute;
-	  width:550px;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      background-size: contain;
-	  margin:10px;
-	   }
-	
-	}
-	@media(max-width:575px){
-	body{
-	  position:absolute;
-	  width:350px;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      background-size: contain;
-	  margin:10px;
-	   }
-	   
-	}
+    <title>Heart Disease Detection</title>
 
-    .pain{
-	   color:red;
-	    margin:10px;
-	  }
-  </style>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+
+        }
+
+        .carousel-inner img {
+            height: 70vh;
+        }
+
+
+
+        .details h2 {
+
+            position: relative;
+            top: 100px;
+            margin: auto;
+            color: rgb(18, 231, 231);
+            font-size: 3rem;
+        }
+
+        label:hover {
+            transform: scale(1.03);
+        }
+
+        .details h2 {
+            /* margin-bottom: 300px; */
+            position: relative;
+            top: 100px;
+            margin: auto;
+            color: rgb(18, 231, 231);
+            font-size: 3rem;
+
+        }
+
+        .gallery-h1 h1 {
+
+            background-color: rgb(44, 43, 43);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+
+        }
+
+        .details h1 {
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            background-color: rgb(45, 47, 49);
+        }
+
+        #electrical {
+
+            font-size: 20px;
+            background-color: rgb(255, 252, 252);
+            border-radius: 20px;
+            outline: none;
+            width: 315px;
+            color: rgb(0, 0, 0);
+            border: 3px solid rgb(45, 47, 49);
+
+        }
+
+
+        #tech {
+
+            margin-top: 50px;
+			margin:auto;
+            padding: 15px 35px;
+            background-color: rgba(255,0,0,0.8);
+            border-radius: 10px;
+            color: black;
+            font-size: 1.0rem;
+            border: 4px solid black;
+			 justify-content: center;
+            align-items: center;
+			text-align: center;
+			display: flex;
+        }
+
+        .carousel-caption {
+            background: rgba(24, 25, 26, 0.5);
+            border-radius: 10px;
+        }
+
+        .carousel-caption h3 {
+
+
+            font-family: 'Rowdies', cursive;
+            color: rgb(255,0,0);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+
+        }
+
+        .carousel-caption p {
+            padding: 7px;
+
+        }
+
+        .img-thumbnail {
+            height: 300px;
+        }
+
+        .Content-h5 {
+
+            padding: 15px;
+            background-color: rgb(153, 156, 150);
+            color: white;
+            border-radius: 15px;
+            margin-bottom: 25px;
+        }
+
+        @media only screen and (max-width: 325px) {
+            body {
+                font-size: x-small;
+            }
+        }
+    </style>
+
 
 </head>
 
 <body>
 
- 
- <div class="login">
-	
-    <!-- Get input for predict the  heart disease -->
-    <center>
-         <br>
-            <br>
-               <br>
-                  <br>
-    <form action="{{ url_for('predict')}}"method="post">
-       
-          <br>
-            <br>
-              <br>
-                <br>
-                 
+    <header>
+	<div class="container-fluid">
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1" class=""></li>
+                    <li data-target="#myCarousel" data-slide-to="2" class=""></li>
+					<li data-target="#myCarousel" data-slide-to="3" class=""></li>
+					<li data-target="#myCarousel" data-slide-to="4" class=""></li>
+					<li data-target="#myCarousel" data-slide-to="5" class=""></li>
+					<li data-target="#myCarousel" data-slide-to="6" class=""></li>
+					<li data-target="#myCarousel" data-slide-to="7" class=""></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active ">
+                        <img src="static\images\img1.jpg" class="d-block w-100" alt="...">
 
-        <h1>Enter the value of heart features >>></h1>
-        
-    	<input type="text" name="age" placeholder="Enter the Age" required="required" />
-        <input type="text" name="trestbps" placeholder=" Blood Pressure(in mm-Hg)" required="required" />
-		<input type="text" name="chol" placeholder="serum Cholestrol(in mg/dl)" required="required" />
-        <input type="text" name="thalach" placeholder="Heart rate(per one Minute)" required="required" />
-            <input type="text" name="oldpeak" placeholder="Old peak" required="required" />
-		
+                        <div class="container">
+                            <div class="container background-img3">
+                                <div class="carousel-caption">
+
+                                    <h3>What is Heart Disease?</h3>
+                                    <p>
+ Heart disease describes a range of conditions that affect your heart. Heart diseases include: Blood vessel disease, such as coronary artery disease. Heart rhythm problems (arrhythmias) Heart defects you're born with (congenital heart defects
+ </p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <img src="static\images\img2.jpg" class="d-block w-100" alt="...">
+                        <div class="container">
+                            <div class="carousel-caption">
+                                <h3>
+What is the most common heart disease?
+
+                                </h3>
+                                <p>
+
+
+
+Coronary Heart Disease (CHD) is the most common form of heart disease. It occurs when the arteries supplying blood to the heart narrow or harden from the build-up of plaque. Plaque is made up of fat, cholesterol and other substances found in the blood. This plaque build-up is also known as atherosclerosis.
+					   </p>
+
+                            </div>
+                        </div>
+                    </div>
+  <div class="carousel-item">
+                        <img src="static\images\img3.jpg" class="d-block w-100" alt="...">
+                        <div class="container">
+                            <div class="carousel-caption">
+                                <h3>
+
+
+What does a heart blockage feel like?
+
+                                </h3>
+                                <p>
+
+The symptoms of an artery blockage include chest pain and tightness, and shortness of breath. Imagine driving through a tunnel. On Monday, you encounter a pile of rubble. There is a narrow gap, big enough to drive through.
+
+
+</p>
+
+                            </div>
+                        </div>
+                    </div>
+                 <div class="carousel-item">
+                        <img src="static\images\img4.jpg" class="d-block w-100" alt="...">
+                        <div class="container">
+                            <div class="carousel-caption">
+                                <h3>What does heart pain feel like?
+                                </h3>
+                                <p>
+
+Pressure, fullness, burning or tightness in your chest. Crushing or searing pain that radiates to your back, neck, jaw, shoulders, and one or both arms. Pain that lasts more than a few minutes, gets worse with activity, goes away and comes back, or varies in intensity. Shortness of breath.
+
+
+			</p>
+
+                            </div>
+                        </div>
+                    </div>
+					<div class="carousel-item">
+                        <img src="static\images\img5.jpg" class="d-block w-100" alt="...">
+                        <div class="container">
+                            <div class="carousel-caption">
+                                <h3>
+
+Can stress cause heart pain?
+                                </h3>
+                                <p>
+
+
+
+
+Having too much stress, for too long, is bad for your heart. If you're often stressed, and you don't have good ways to manage it, you are more likely to have heart disease, high blood pressure, chest pain, or irregular heartbeats.
+	</p>
+
+                            </div>
+                        </div>
+                    </div>
+					<div class="carousel-item">
+                        <img src="static\images\img6.jpg" class="d-block w-100" alt="...">
+                        <div class="container">
+                            <div class="carousel-caption">
+                                <h3>
+How do you know if your heart is strong?
+
+                                </h3>
+                                <p>
+
+
+
+The ability to quickly rebound to your normal heart rate after intensive exercise is another sign you have a healthy heart. You can test yourself by taking your heart rate immediately after exercising and again after resting for one minute. Ideally, your rate should have dropped by 20 beats or more
+							</p>
+
+                            </div>
+                        </div>
+                    </div>
+					<div class="carousel-item">
+                        <img src="static\images\img7.jpg" class="d-block w-100" alt="...">
+                        <div class="container">
+                            <div class="carousel-caption">
+                                <h3>
+
+
+What is the best test to check for heart problems?
+
+							   </h3>
+                                <p>
+
+An echocardiogram is a common test. It gives a picture of your heart using ultrasound, a type of X-ray. It uses a probe either on your chest or down your oesophagus (throat). It helps your doctor check if there are any problems with your heart's valves and chambers, and see how strongly your heart pumps blood.
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="static\images\img8.jpg" class="d-block w-100" alt="...">
+                        <div class="container">
+                            <div class="container ">
+                                <div class="carousel-caption">
+                                    <h3>How do doctors rule out heart problems?
+                                     </h3>
+<p>
+
+Various tests are used to diagnose heart disease. Your doctor will start by taking your personal and family medical history, recording current and past symptoms, and doing laboratory tests and an electrocardiogram. Based on the results of the assessment and tests, your doctor may order further tests
+</p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev" >
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    </header>
+	<div>
+                    <h5 style="padding: 15px; background-color: rgb(255, 0, 0); color: white;"
+                        class="text-center mb-5 content-h1 rounded">
+Heart Disease Detection & Awareness</h5>
+                </div>
+	<marquee direction="right" scrollamount="15" style="background-color: rgba(255, 0, 0,0.7);">
+<img src="static\images\img9.jpg" style="width:350px; height:200px;" >
+<img src="static\images\img10.jpg" style="width:350px; height:200px;" >
+<img src="static\images\img11.jpg" style="width:350px; height:200px;" >
+<img src="static\images\img12.jpg" style="width:350px; height:200px;" >
+<img src="static\images\img13.jpg" style="width:350px; height:200px;" >
+<img src="static\images\img14.jpg" style="width:350px; height:200px;" >
+<img src="static\images\img15.jpg" style="width:350px; height:200px;" >
+<img src="static\images\img16.jpg" style="width:350px; height:200px;" >
+</marquee>
+				<div>
+                    <p style="padding: 15px; background-color: rgba(255, 0, 0,0.8); color: white;"
+                        class=" mb-5 content-h1 rounded">
+<b style="text-align:center;">>>>>>How the heart works?>>>>></b><br>
+<span>
+Your heart is a pump. It's a muscular organ about the size of your fist, located slightly left of center in your chest. Your heart is divided into the right and the left sides.<br>
+
+The right side of the heart includes the right atrium and ventricle. It collects and pumps blood to the lungs through the pulmonary arteries.<br>
+The lungs give the blood a new supply of oxygen. The lungs also breathe out carbon dioxide, a waste product.<br>
+Oxygen-rich blood then enters the left side of the heart, including the left atrium and ventricle.<br>
+The left side of the heart pumps blood through the largest artery in the body (aorta) to supply tissues throughout the body with oxygen and nutrients.<br>
+</span>
+<span class="text-center">
+<marquee direction="right" scrollamount="20" style="background-color: rgba(255, 0, 0,0.8);">
+<img src="static\images\img17.jpg" style="width:350px; height:200px;" >
+<img src="static\images\img18.jpg" style="width:350px; height:200px;" >
+<img src="static\images\img19.jpg" style="width:350px; height:200px;" >
+<img src="static\images\img20.jpg" style="width:350px; height:200px;" >
+<img src="static\images\img21.jpg" style="width:350px; height:200px;" >
+<img src="static\images\img22.jpg" style="width:350px; height:200px;" >
+<img src="static\images\img23.jpg" style="width:350px; height:200px;" >
+<img src="static\images\img24.jpg" style="width:350px; height:200px;" >
+</marquee>
+</span><br>
+<span>
+<b style="text-align:center;">>>>>>Risk factors for Your Heart>>>>></b><br>
+Risk factors for developing heart disease include:<br>
+
+<b>Age:</b> Growing older increases your risk of damaged and narrowed arteries and a weakened or thickened heart muscle.<br>
+<b>Sex:</b> Men are generally at greater risk of heart disease. The risk for women increases after menopause.<br>
+<b>Family history:</b> A family history of heart disease increases your risk of coronary artery disease, especially if a parent developed it at an early age (before age 55 for a male relative, such as your brother or father, and 65 for a female relative, such as your mother or sister).<br>
+<b>Smoking:</b>Nicotine tightens your blood vessels, and carbon monoxide can damage their inner lining, making them more susceptible to atherosclerosis. Heart attacks are more common in smokers than in nonsmokers.<br>
+<b>Poor diet:</b> A diet that's high in fat, salt, sugar and cholesterol can contribute to the development of heart disease.<br>
+<b>High blood pressure:</b> Uncontrolled high blood pressure can result in hardening and thickening of your arteries, narrowing the vessels through which blood flows.<br>
+<b>High blood cholesterol levels:</b> High levels of cholesterol in your blood can increase the risk of plaque formation and atherosclerosis.<br>
+<b>Diabetes:</b> Diabetes increases your risk of heart disease. Both conditions share similar risk factors, such as obesity and high blood pressure.<br>
+<b>Obesity:</b> Excess weight typically worsens other heart disease risk factors.<br>
+<b>Physical inactivity:</b> Lack of exercise also is associated with many forms of heart disease and some of its other risk factors as well.<br>
+<b>Stress:</b> Unrelieved stress may damage your arteries and worsen other risk factors for heart disease.<br>
+<b>Poor dental health:</b> It's important to brush and floss your teeth and gums often, and have regular dental checkups. If your teeth and gums aren't healthy, germs can enter your bloodstream and travel to your heart, causing endocarditis. <br>
+	  
+</span>
+</p>
+<div class="container">
+<span>
+     <h5 style="padding: 15px; background-color: rgb(255, 0, 0); color: white;"
+                        class="text-center mb-5 content-h1 rounded">
+Details about All Parameters of the dataset And its Range as per pathology </h5>
+<table border="4" height="300px" width="450px" style="text-align:center;border-color:black;border-style:dotted; background-color:rgba(255,0,0,0.5);">
+<thead >
+<tr><td><b>About all Information for dataset</b></td><td><b>Range</b></td></tr>
+</thead>
+<tbody>
+<tr><td>Age(in Years)</td><td>25-110</td></tr>
+<tr><td>Blood-Pressure(in mm/Hg)</td><td>60-200[Normal:80-120]</td></tr>
+<tr><td>Cholesterol(In mg/dl)</td><td>120-600[Normal:<=200]</td></tr>
+<tr><td>Heart rate(per minute)</td><td>60-200[Normal:60-100]</td></tr>
+<tr><td>value of old peak</td><td>0-6</td></tr>
+<tr><td>Sex(Male/Female)</td><td>Yes=1,No=0</td></tr>
+<tr><td>Chest Pain(No Pain/Medium Pain/High Pain/Very High Pain)</td><td>Yes=1,No=0</td></tr>
+<tr><td>Diabaties in blood(mg/dl)</td><td>>120 mg/dl or <=120 mg/dl</td></tr>
+<tr><td>ECG(Low Peak/Medium Peak/High Peak)</td><td>Yes=1,No=0</td></tr>
+<tr><td>Chest Pain in Exercise</td><td>Yes=1,No=0</td></tr>
+<tr><td>Number of major vessels colored by flourosopy(0/1/2)</td><td>Yes=1,No=0</td></tr>
+<tr><td>Reaction of the Person(Normal Level/Medium Level/Riskable Level)</td><td>Yes=1,No=0</td></tr>
+</tbody>
+
+</table>
+
+
+</span>
+</div>
+                </div>	
+				 <h2 class="text-center mt-4 mb-4" style="font-size: 1.0rem;"><b>
+			>>>Please Enter Your Some Information as per Pathological Report for predicting Heart Disease>>>
+</b></h2>
+<div class="container">
+            <form action="{{ url_for('predict')}}" method="POST" action="/">
+<input type="text" name="age" placeholder="Enter the Age(in years)" style="border:3px black solid; border-radius:15%;" required="required" />
+        <input type="text" name="trestbps" placeholder=" Blood-Pressure(mm-Hg)" style="border:3px black solid; border-radius:15%;" required="required" />
+		<input type="text" name="chol" placeholder="Serum Cholestrol(mg/dl)" style="border:3px black solid; border-radius:15%;" required="required" />
+        <input type="text" name="thalach" placeholder="Heart rate(per minute)" style="border:3px black solid; border-radius:15%;" required="required" />
+            <input type="text" name="oldpeak" placeholder="EnterValue of Old Peak" style="border:3px black solid; border-radius:15%;" required="required" />
+		<input type="text" name="sex_0" placeholder="Sex(Female)" style="border:3px black solid; border-radius:15%;" required="required" />
         
 
 		<br>
-    	<input type="text" name="sex_0" placeholder="Sex_F" required="required" />
-        <input type="text" name="sex_1" placeholder="sex_M" required="required" />
-		<input type="text" name="cp_0" placeholder="CP1" required="required" />
-        <input type="text" name=" cp_1" placeholder="CP2" required="required" />
-            <input type="text" name="cp_2" placeholder="CP3" required="required" />
     	
+        <input type="text" name="sex_1" placeholder="Sex(Male)" style="border:3px black solid; border-radius:15%;" required="required" />
+		<input type="text" name="cp_0" placeholder="Chest Pain(No Pain)" style="border:3px black solid; border-radius:15%;" required="required" />
+        <input type="text" name=" cp_1" placeholder="Chest Pain(Medium Pain)" style="border:3px black solid; border-radius:15%;" required="required" />
+            <input type="text" name="cp_2" placeholder="Chest Pain(High Pain)" style="border:3px black solid; border-radius:15%;" required="required" />
+    	<input type="text" name="cp_3" placeholder="Chest Pain(Very High)" style="border:3px black solid; border-radius:15%;" required="required" />
+        <input type="text" name="fbs_0" placeholder="Diabaties(mg/dl)" style="border:3px black solid; border-radius:15%;" required="required" />
         
 		
 		<br>
-    	<input type="text" name="cp_3" placeholder="CP4" required="required" />
-        <input type="text" name="fbs_0" placeholder="Diabaties in blood" required="required" />
-		<input type="text" name="restecg_0" placeholder="Electrocardiographic Result1" required="required" />
-        <input type="text" name="restecg_1" placeholder="Electrocardiographic Result2" required="required" />
-            <input type="text" name="restecg_2" placeholder="Electrocardiographic Result3" required="required" />
     	
+		<input type="text" name="restecg_0" placeholder="ECG(Low Peak)" style="border:3px black solid; border-radius:15%;" required="required" />
+        <input type="text" name="restecg_1" placeholder="ECG(Medium Peak)" style="border:3px black solid; border-radius:15%;" required="required" />
+            <input type="text" name="restecg_2" placeholder="ECG(High Peak)" style="border:3px black solid; border-radius:15%;" required="required" />
+    	<input type="text" name="exang_0" placeholder="Chest Pain in Exercise(N)" style="border:3px black solid; border-radius:15%;" required="required" />
+        <input type="text" name="exang_1" placeholder="Chest Pain in Exercise(Y)" style="border:3px black solid; border-radius:15%;" required="required" />
+		<input type="text" name=" slope_0" placeholder="ECG Slope(Upsloping)" style="border:3px black solid; border-radius:15%;" required="required" />
+        
         
 		
     	<br>
-    	<input type="text" name="exang_0" placeholder="Exercise induced Angina(NO)" required="required" />
-        <input type="text" name="exang_1" placeholder="Exercise induced Angina(YES)" required="required" />
-		<input type="text" name=" slope_0" placeholder="Slope1" required="required" />
-        <input type="text" name=" slope_1" placeholder="Slope2" required="required" />
-    <input type="text" name="  slope_2" placeholder="Slope3" required="required" />
+    	<input type="text" name=" slope_1" placeholder="ECG Slope(Flatsloping)" style="border:3px black solid; border-radius:15%;" required="required" />
+    <input type="text" name="  slope_2" placeholder="ECG Slope(Downsloping)" style="border:3px black solid; border-radius:15%;" required="required" />
     	
-        
+         <input type="text" name=" ca_0" placeholder="vessels colored(0)" style="border:3px black solid; border-radius:15%;" required="required" />
+        <input type="text" name="ca_1" placeholder="vessels colored(1)" style="border:3px black solid; border-radius:15%;" required="required" />
+    <input type="text" name="ca_2" placeholder="vessels colored(2)" style="border:3px black solid; border-radius:15%;" required="required" />
+        <input type="text" name=" thal_1" placeholder="Reaction(Normal Level)" style="border:3px black solid; border-radius:15%;" required="required" />
 			<br>
 
 
       
-      <input type="text" name=" ca_0" placeholder="Vessel 0" required="required" />
-        <input type="text" name="ca_1" placeholder="Vessel 1" required="required" />
-    <input type="text" name="ca_2" placeholder="Vessel 2" required="required" />
-        <input type="text" name=" thal_1" placeholder="Reaction(Normal Zone)" required="required" />
-    <input type="text" name="thal_2" placeholder="Reaction(Medium Zone)" required="required" />
+     
+    <input type="text" name="thal_2" placeholder="Reaction(Medium Level)" style="border:3px black solid; border-radius:15%;" required="required" />
       
         
-      <br>
-      <input type="text" name="thal_3" placeholder="Reaction(Riskable Zone)" required="required" />
-      <br>
-
-
       
-        
-        <!-- Show button -->
-        <div class="button_cont" align="center"><a class="button_css" href="https://github.com/projectprogrammer057" target="_blank" rel="nofollow noopener">
-            <button type="submit" class="btn btn-primary btn-block btn-large"><strong>Predict Heart disease</strong></button></a>
-        </div>
-        
-    </form>
-    </center>
-   
-   <!-- Show predicted output using ML model --> 
-   <div>
+      <input type="text" name="thal_3" placeholder="Reaction(Riskable Level)" style="border:3px black solid; border-radius:15%;" required="required" />
+    
+        <br>
+        <br>
+                <button  id="tech">Predict  Disorder</button>
+
+            </form>
+
+		<div>
        <center>
-   <h1>{{ prediction_text }}</h1>
+   <h4 style="color:red;">{{ prediction_text }}</h4>
        </center>
    </div>
 
  </div>
-	</br>
-	</br>
-	<p class="pain">
-        Age:---age in years</br>
-	Sex:--1=male,0=Female(Sex_M=Male,Sex_F=Female)</br>
-        cp:--Chest Pain type[CP1(Low type,0=No CP1,1=Yes CP1),CP2(Medium type,0=No CP2,1=Yes CP2),CP3(High type,0=No CP3,1=Yes CP3),CP4(Very High type,0=No CP4,1=Yes CP4)]</br>
-        Diabaties in blood:--0=No Diabaties,1=Yes Diabaties</br>
-        Blood Pressure(in mm-Hg):--resting blood pressure(in mm-hg on admission to the hospital)</br>
-        serum Cholestrol(in mg/dl):--Serum Cholestrol in mg/dl</br>
-        Heart rate(per one Minute):--Maximam Heart Rate Achived in One minutes</br>
-        Old peak:--ST depression induced by exercise relative to rest</br>
-        Electrocardiographic Result:--[Electrocardiographic Result1(Low peak,0=No,1=Yes),Electrocardiographic Result2(Medium peak,0=No,1=Yes),Electrocardiographic Result3(High peak,0=No,1=Yes)</br>
-        Exercise induced Angina:--0=No,1=Yes</br>
-        slope:--The ST segment shift relative to exercise-induced increments in heart rate[Slope1(Low peak,0=No,1=Yes),Slope2(Medium peak,0=No,1=Yes),Slope3(High peak,0=No,1=Yes]</br>
-        Vessel:--The Number Of the vessels are blocked[Vessel 0(No Vessel Blocked,0=No,1=Yes),Vessel 1(1 Vessel Blocked,0=No,1=Yes),Vessel 2(2 Vessels Blocked,0=No,1=Yes)]</br>
-        Reaction:--Patient Reaction[Reaction(Normal Zone,0=No,1=Yes),Reaction(Medium Zone,0=No,1=Yes),Reaction(Risky Zone,0=No,1=Yes)]
-        </p>
-        
+ <br>
+ <section>
 
-        
+        <div class="container">
+            <h5 style="padding: 15px; background-color: rgb(255, 0, 0); color: white;"
+                class="text-center my-3 content-h1">
+                ABOUT SOME HEART DISEASES</h5>
+        </div>
 
 
-	       
 
-</body>
-</html>
+            <div class="col-sm">
+
+
+                <div class="details">
+ <p>
+
+Heart disease: Any disorder that affects the heart. Sometimes the term "heart disease" is used narrowly and incorrectly as a synonym for coronary artery disease. Heart disease is synonymous with cardiac disease but not with cardiovascular disease which is any disease of the heart or blood vessels.
+ </p></br></br>
+						<h5 style="text-align:center; color:red;">Coronary heart disease</h5>
+		 <h5 style="color:red;"><u>1.Overview</u></h5><br>
+<p>
+Damage or disease in the heart's major blood vessels.<br>
+The usual cause is the build-up of plaque. This causes coronary arteries to narrow, limiting blood flow to the heart.<br>
+Coronary artery disease can range from no symptoms, to chest pain, to a heart attack.<br>
+Treatments include lifestyle changes, medication, angioplasty and surgery.<br>
+</p>
+
+		 <h5 style="color:red;"><u>2.Symptoms</u></h5><br>
+<p>
+<b>Requires a medical diagnosis</b><br>
+Coronary artery disease can range from no symptoms, to chest pain, to a heart attack.<br>
+<b>Can have no symptoms, but people may experience:</b><br>
+<b>Pain areas:</b> in the chest<br>
+<b>Gastrointestinal:</b> indigestion or nausea<br>
+<b>Whole body: </b>light-headedness or sweating<br>
+<b>Also common:</b> fast heart rate or shortness of breath<br>
+</p>
+<div class="text-center rounded-circle">
+<img src="static\images\img25.jpg" style="width:350px; height:200px;" >
+</div>
+<br>
+
+		 <h5 style="color:red;"><u>3.Treatments</u></h5><br>
+<p>
+<b>Treatment consists of self care and blood thinners</b><br>
+Treatments include lifestyle changes, medication, angioplasty and surgery.<br>
+<b>Self-care:</b></br>
+Quitting smoking, Weight loss, Physical exercise and Low fat diet<br>
+<b>Medications:</b><br>
+Statin, Anticoagulant, Beta blocker, Antianginal and Calcium channel blocker<br>
+<b>Medical procedure:</b><br>
+Coronary stent and Angioplasty<br>
+<b>Surgery</b><br>
+Coronary artery bypass surgery<br>
+Consult a doctor for medical advice<br>
+
+</p>
+
+
+<br>
+<h5 style="text-align:center; color:red;">High blood pressure (hypertension)</h5>
+		 <h5 style="color:red;"><u>1.Overview</u></h5><br>
+<p>
+A condition in which the force of the blood against the artery walls is too high.<br>
+Usually hypertension is defined as blood pressure above 140/90, and is considered severe if the pressure is above 180/120.<br>
+High blood pressure often has no symptoms. Over time, if untreated, it can cause health conditions, such as heart disease and stroke.<br>
+Eating a healthier diet with less salt, exercising regularly and taking medication can help lower blood pressure.<br>
+
+</p>
+
+		 <h5 style="color:red;"><u>2.Symptoms</u></h5><br>
+<p>
+<b>Requires a medical diagnosis:-</b><br>
+High blood pressure often has no symptoms. Over time, if untreated, it can cause health conditions, such as heart disease and stroke.<br>
+This medical condition typically has no symptoms<br>
+</p>
+<div class="text-center rounded-circle">
+<img src="static\images\img26.jpg" style="width:350px; height:200px;" >
+</div>
+<br>
+
+		 <h5 style="color:red;"><u>3.Treatments</u></h5><br>
+<b>Treatment consists of self care and diuretics:</b><br>
+Eating a healthier diet with less salt, exercising regularly and taking medication can help lower blood pressure.<br>
+<b>Self-care:</b><br>
+Physical exercise, Stress management, Quitting smoking, Home blood pressure monitors and Low sodium diet<br>
+<b>Medications:</b><br>
+ACE inhibitor, Diuretic, Beta blocker, Antihypertensive drug, Calcium channel blocker and Vasodilator<br>
+
+
+<br>
+<h5 style="text-align:center; color:red;">Cardiac arrest</h5>
+		 <h5 style="color:red;"><u>1.Overview</u></h5><br>
+<p>
+Sudden, unexpected loss of heart function, breathing and consciousness.<br>
+In cardiac arrest, the heart abruptly stops beating. Without prompt intervention, it can result in the person's death.<br>
+The main symptom is loss of consciousness and unresponsiveness.<br>
+This medical emergency needs immediate CPR or use of a defibrillator. Hospital care includes drugs, an implantable device or other procedures.<br>
+</p>
+
+		 <h5 style="color:red;"><u>2.Symptoms</u></h5><br>
+<p>
+<b>Requires a medical diagnosis:</b><br>
+The main symptom is loss of consciousness and unresponsiveness.<br>
+<b>People may experience:</b><br>
+<b>Pain areas:</b> in the chest<br>
+<b>Whole body:</b> collapse, fainting, or light-headedness<br>
+<b>Also common:</b> pulselessness, palpitations, or shortness of breath<br>
+</p>
+<div class="text-center rounded-circle">
+<img src="static\images\img27.jpg" style="width:350px; height:200px;" >
+</div>
+<br>
+
+		 <h5 style="color:red;"><u>3.Treatments</u></h5><br>
+<p>
+<b>Treatment consists of procedures and suportive care:</b><br>
+This medical emergency needs immediate CPR or use of a defibrillator. Hospital care includes drugs, an implantable device or other procedures.<br>
+<b>Supportive care:</b><br>
+Defibrillation, Tracheal intubation, Targeted temperature management and Cardiopulmonary resuscitation (CPR)<br>
+<b>Medications:</b><br>
+Blood pressure support, Involuntary nervous system blocker and Antiarrhythmic<br>
+<b>Medical procedure:</b><br>
+Coronary catheterization</br>
+<b>Devices:</b>
+Implantable cardioverter defibrillator<br>
+</p>
+
+
+<br>
+<h5 style="text-align:center; color:red;">Heart failure</h5>
+		 <h5 style="color:red;"><u>1.Overview</u></h5><br>
+<p>
+A chronic condition in which the heart doesn't pump blood as well as it should.<br>
+Heart failure can occur if the heart cannot pump (systolic) or fill (diastolic) adequately.<br>
+Symptoms include shortness of breath, fatigue, swollen legs and rapid heartbeat.<br>
+Treatments can include eating less salt, limiting fluid intake and taking prescription medication. In some cases a defibrillator or pacemaker may be implanted.<br>
+</p>
+
+		 <h5 style="color:red;"><u>2.Symptoms</u></h5><br>
+<p>
+<b>Requires a medical diagnosis:</b><br>
+Symptoms include shortness of breath, fatigue, swollen legs and rapid heartbeat.<br>
+<b>People may experience:</b><br>
+<b>Pain areas:</b> in the chest</br>
+<b>Cough:</b> can be dry or with phlegm</br>
+<b>Whole body:</b> dizziness, fatigue, inability to exercise, or loss of appetite</br>
+<b>Respiratory:</b> fast breathing, shortness of breath at night, shortness of breath on exercise, or shortness of breath on lying down</br>
+<b>Gastrointestinal:</b> water retention or bloating</br>
+<b>Also common: </b>excess urination at night, palpitations, swollen feet, swollen legs, or weight gain<br>
+</p>
+<div class="text-center rounded-circle">
+<img src="static\images\img28.jpg" style="width:350px; height:200px;" >
+</div>
+<br>
+
+		 <h5 style="color:red;"><u>3.Treatments</u></h5><br>
+<p>
+<b>Treatment depends on severity:</b><br>
+Treatments can include eating less salt, limiting fluid intake and taking prescription medication. In some cases a defibrillator or pacemaker may be implanted.<br>
+<b>Self-care:</b><br>
+Physical exercise, Quitting smoking, Weight loss and Low sodium diet<br>
+<b>Medications:</b><br>
+Diuretic, Beta blocker, ACE inhibitor, Antihypertensive drug, Dietary supplement, Blood pressure support, Vasodilator and Antianginal<br>
+<b>Medical procedure:</b><br>
+Cardiac resynchronization therapy<br>
+<b>Devices:</b><br>
+Implantable cardioverter defibrillator<br>
+<b>Surgery:</b>
+Coronary artery bypass surgery<br>
+
+</p>
+
+
+<br>
+<h5 style="text-align:center; color:red;">Arrhythmia</h5>
+		 <h5 style="color:red;"><u>1.Overview</u></h5><br>
+<p>
+Improper beating of the heart, whether irregular, too fast or too slow.<br>
+Cardiac arrhythmia occurs when electrical impulses in the heart don't work properly.<br>
+There may be no symptoms. Alternatively, symptoms may include a fluttering in the chest, chest pain, fainting or dizziness.<br>
+If required, treatment includes anti-arrhythmic drugs, medical procedures, implantable devices and surgery<br>
+</p>
+
+		 <h5 style="color:red;"><u>2.Symptoms</u></h5><br>
+<p>
+<b>Requires a medical diagnosis:</b><br>
+There may be no symptoms. Alternatively, symptoms may include a fluttering in the chest, chest pain, fainting or dizziness.</br>
+<b>Can have no symptoms, but people may experience:</b><br>
+<b>Pain areas:</b> in the chest<br>
+<b>Whole body:</b> dizziness, fainting, or light-headedness<br>
+<b>Heart:</b> palpitations or slow heart rate<br>
+<b>Also common: </b>shortness of breath<br>
+</p>
+<div class="text-center rounded-circle">
+<img src="static\images\img29.jpg" style="width:350px; height:200px;" >
+</div>
+<br>
+
+		 <h5 style="color:red;"><u>3.Treatments</u></h5><br>
+<p>
+<b>Treatment varies:</b><br>
+If required, treatment includes anti-arrhythmic drugs, medical procedures, implantable devices and surgery.<br>
+<b>Medications:</b><br>
+Antiarrhythmic, Calcium channel blocker, Beta blocker and Dietary supplement<br>
+<b>Medical procedure:</b><br>
+Cardioversion and Radiofrequency ablation<br>
+<b>Devices:</b><br>
+Pacemaker and Implantable cardioverter defibrillator<br>
+<b>Supportive care:</b><br>
+Cardiac monitoring<br>
+</p>
+
+
+<br>
+<h5 style="text-align:center; color:red;">Peripheral artery disease</h5>
+		 <h5 style="color:red;"><u>1.Overview</u></h5><br>
+<p>
+A circulatory condition in which narrowed blood vessels reduce blood flow to the limbs.<br>
+Peripheral vascular disease is a sign of fatty deposits and calcium building up in the walls of the arteries (atherosclerosis). Risk factors include ageing, diabetes and smoking.<br>
+Symptoms may include leg pain, particularly when walking.<br>
+Tobacco cessation, exercise and a healthy diet are often successful treatments. When these changes aren't enough, medication or surgery can help.<br>
+
+</p>
+
+		 <h5 style="color:red;"><u>2.Symptoms</u></h5><br>
+<p>
+<b>Requires a medical diagnosis:</b><br>
+Symptoms may include leg pain, particularly when walking.<br>
+<b>People may experience:</b><br>
+<b>Pain areas:</b> in the buttocks<br>
+<b>Pain circumstances:</b> can occur in the leg and improved with rest or in the leg while exercising<br>
+<b>Skin:</b> cool skin, loss of hair on the legs, thinning of skin on the legs, or ulcers<br>
+
+</p>
+<div class="text-center rounded-circle">
+<img src="static\images\img30.jpg" style="width:350px; height:200px;" >
+</div>
+<br>
+
+		 <h5 style="color:red;"><u>3.Treatments</u></h5><br>
+<p>
+<b>Treatment consists of self care and blood thinners:</b>
+Tobacco cessation, exercise and a healthy diet are often successful treatments. When these changes aren't enough, medication or surgery can help.<br>
+<b>Self-care:</b><br>
+Physical exercise, Quitting smoking and Heart-Healthy diet<br>
+<b>Medications:</b><br>
+Statin, Vasodilator and Anticoagulant<br>
+<b>Medical procedure:</b>
+Angioplasty
+
+</p>
+
+
+<br>
+<h5 style="text-align:center; color:red;">Stroke</h5>
+		 <h5 style="color:red;"><u>1.Overview</u></h5><br>
+<p>
+Damage to the brain from interruption of its blood supply.<br>
+A stroke is a medical emergency.<br>
+Symptoms of stroke include trouble walking, speaking and understanding, as well as paralysis or numbness of the face, arm or leg.<br>
+Early treatment with medication like tPA (clot buster) can minimise brain damage. Other treatments focus on limiting complications and preventing additional strokes.<br>
+
+</p>
+
+		 <h5 style="color:red;"><u>2.Symptoms</u></h5><br>
+<p>
+<b>Requires a medical diagnosis:</b><br>
+Symptoms of stroke include trouble walking, speaking and understanding, as well as paralysis or numbness of the face, arm or leg.<br>
+<b>People may experience:</b><br>
+<b>Muscular:</b> difficulty walking, instability, paralysis with weak muscles, problems with coordination, stiff muscles, overactive reflexes, or paralysis of one side of the body</br>
+<b>Visual:</b> blurred vision, double vision, sudden visual loss, or temporary loss of vision in one eye<br>
+<b>Speech: </b>difficulty speaking, slurred speech, or speech loss<br>
+<b>Whole body:</b> fatigue, light-headedness, or vertigo<br>
+<b>Limbs:</b> numbness or weakness<br>
+<b>Sensory:</b> pins and needles or reduced sensation of touch<br>
+<b>Facial: </b>muscle weakness or numbness</br>
+<b>Also common:</b> difficulty swallowing, headache, inability to understand, mental confusion, or rapid involuntary eye movement<br>
+
+</p>
+<div class="text-center rounded-circle">
+<img src="static\images\img31.jpg" style="width:350px; height:200px;" >
+</div>
+<br>
+
+		 <h5 style="color:red;"><u>3.Treatments</u></h5><br>
+<p>
+<b>Treatment consists of blood thinners:</b><br>
+Early treatment with medication like tPA (clot buster) can minimise brain damage. Other treatments focus on limiting complications and preventing additional strokes.<br>
+<b>Medications:</b><br>
+Alteplase, Anticoagulant, Statin, Antihypertensive drug and ACE inhibitor<br>
+<b>Supportive care:</b><br>
+Cardiac monitoring<br>
+<b>Surgery:</b><br>
+Carotid endarterectomy<br>
+<b>Therapies:</b><br>
+Speech therapy, Rehabilitation, Occupational Therapy, Physical Therapy and Stroke rehabilitation<br>
+Consult a doctor for medical advice</br>
+
+</p>
+
+
+<br>
+<h5 style="text-align:center; color:red;">Can a heart disease be cured permanently?</h5>
+
+
+
+<p>
+Heart disease cannot be cured but treatment can help manage the symptoms and reduce the chances of problems such as heart attacks. Treatment can include: lifestyle changes, such as regular exercise and stopping smoking.
+</p>
+
+                    </h5>
+                </div>
+            </div>
+        </div>
+
+
+            <div class="col-sm">
+
+                <div>
+                    <h5 style="padding: 15px; background-color: rgb(255, 0, 0); color: white;"
+                        class="text-center mb-5 content-h1 rounded">
+                     HEART DISEASE PREVENTION AND AWERNESS</h5>
+                </div>
+                <div class="details">
+
+      <h5 style="text-align:center; color:red;">Can heart disease be prevented?</h5>
+	  <p>
+	
+You can choose healthy habits to help prevent heart disease. Choose healthy meals and snacks to help prevent heart disease and its complications. Be sure to eat plenty of fresh fruits and vegetables and fewer processed foods. Eating lots of foods high in saturated fat and trans fat may contribute to heart disease.
+	  </p>
+
+                  <h5 style="text-align:center; color:red;">What can I do to lower my risk of heart disease?</h5>
+				  <p>
+<b>1.Control your blood pressure. High blood pressure is a major risk factor for heart disease.</b><br>
+<b>2.Keep your cholesterol and triglyceride levels under control.</b><br>
+<b>3.Stay at a healthy weight.</b><br>
+<b>4.Eat a healthy diet.</b><br>
+<b>5.Get regular exercise.</b><br>
+<b>6.Limit alcohol.</b><br>
+<b>7.Don't smoke.</b><br>
+<b>8.Manage stress.</b><br>
+				  
+				  </p>
+
+
+<div class="text-center rounded-circle">
+<img src="static\images\img32.jpg" style="width:350px; height:200px;" >
+</div>
+<br>
+
+ <h5 style="text-align:center; color:red;">Foods for Healthy Heart</h5>
+
+<p>
+Some foods to keep heart healthy:-<br>
+<b>1.Leafy Green Vegetables. Leafy green vegetables like spinach, kale and collard greens are well-known for their wealth of vitamins, minerals and antioxidants.</b><br>
+<b>2.Whole Grains.</b><br>
+<b>3.Berries.</b><br>
+<b>4.Avocados. </b><br>
+<b>5.Fatty Fish and Fish Oil.</b><br>
+<b>6.Walnuts.</b><br>
+<b>7.Beans.</b><br>
+<b>8.Dark Chocolate.</b></br>
+
+</p>
+<div class="text-center rounded-circle">
+<img src="static\images\img33.jpg" style="width:350px; height:200px;">
+</div>
+
+
+<br>
+ <h5 style="text-align:center; color:red;">Why is heart disease important to public health?</h5>
+
+
+
+<br>
+
+
+<p>
+
+Cardiovascular Disease is a major cause of disability and premature death throughout the world and it substantially contributes to the escalating costs of health care, mortality, and morbidity. CVD is also known as heart and blood vessels disease having an average of one death occurring at every 42 s .<br>
+Heart Health Awareness Days and Weeks. February is the awareness month for heart health in the United States, with one day set aside as National Wear Red Day to raise awareness of heart disease.February is American Heart Month, a time when all people can focus on their cardiovascular health. The Division for Heart Disease and Stroke Prevention is shining a light on hypertension (high blood pressure), a leading risk factor for heart disease and stroke.<br>
+ 
+
+
+</p>
+
+
+
+   <div>
+                    <h5 style="padding: 15px; background-color: rgb(255, 0, 0); color: white;"
+                        class="text-center mb-5 content-h1 rounded">
+                       KALAM HEART DISEASE DIAGNOSTIC CENTER<br>
+					  Email:kalamsardar2001@gmail.com </h5>
+                </div>
+</div>
+</section>
+
+				<!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	</body>
+	</html>
